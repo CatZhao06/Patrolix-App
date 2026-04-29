@@ -1,0 +1,14 @@
+{
+  "name": "home_guardian_robot",
+  "description": "An AI-powered home security patrol robot application with live monitoring, face detection, and remote control capabilities.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "real_time_monitoring",
+    "ai_face_detection",
+    "mqtt_control",
+    "usage_statistics"
+  ]
+}
