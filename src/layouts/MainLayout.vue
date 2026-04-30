@@ -1,10 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { RouterView, useRouter, useRoute } from 'vue-router';
 
 const router = useRouter();
 const route = useRoute();
 const activeTab = ref(route.name?.toString() || 'dashboard');
+
+// 监听路由变化，更新底部导航栏状态
+watch(() => route.name, (newName) => {
+  if (newName) {
+    activeTab.value = newName.toString();
+  }
+});
 
 const handleTabChange = (name: string) => {
   router.push({ name });

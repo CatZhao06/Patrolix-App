@@ -10,15 +10,20 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const isOnline = ref(true);
-const streamUrl = ref('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'); // Placeholder for robot POV
+const streamUrl = ref('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800'); // 机器人视角的占位图片
 const batteryLevel = ref(80);
 const networkStrength = ref('强');
 const guardianMode = ref('自动模式');
 const isLightOn = ref(false);
 
+
 const navigateTo = (path: string) => {
   router.push(path);
 };
+
+import { useAppStore } from '@/stores/useAppStore'
+const appstore = useAppStore();
+
 </script>
 
 <template>
@@ -39,7 +44,9 @@ const navigateTo = (path: string) => {
 
     <!-- Live View Card -->
     <div class="relative rounded-2xl overflow-hidden shadow-lg bg-black aspect-video mb-6 group">
-      <img :src="streamUrl" class="w-full h-full object-cover opacity-90" />
+      <!-- <img :src="streamUrl" class="w-full h-full object-cover opacity-90" /> -->
+      <!-- 播放本地视频模拟数据 -->
+       <video src="/videos/video1.mp4" :muted="appstore.isMute" class="w-full h-full object-cover opacity-90" autoplay loop playsinline></video>
       
       <!-- Overlays -->
       <div class="absolute top-3 left-3 flex items-center gap-2 bg-black/40 backdrop-blur-md px-2 py-1 rounded-lg">
@@ -48,10 +55,10 @@ const navigateTo = (path: string) => {
       </div>
 
       <div class="absolute top-3 right-3 flex gap-2">
-        <button @click="navigateTo('/full-screen')" class="p-1.5 bg-black/40 backdrop-blur-md rounded-lg text-white">
+        <button @click="navigateTo('/full-screen')" class="p-1.5 bg-black/40 backdrop-blur-md rounded-lg text-white" style="color: #ffffff;">
           <Maximize :size="16" />
         </button>
-        <button class="p-1.5 bg-black/40 backdrop-blur-md rounded-lg text-white">
+        <button class="p-1.5 bg-black/40 backdrop-blur-md rounded-lg text-white" style="color: #ffffff;">
           <Camera :size="16" />
         </button>
       </div>
@@ -137,7 +144,7 @@ const navigateTo = (path: string) => {
           <span class="text-[10px] text-gray-600 font-medium">报警记录</span>
           <span class="text-[8px] text-orange-400">3条未处理</span>
         </button>
-        <button @click="navigateTo('/history')" class="flex flex-col items-center gap-1">
+        <button @click="navigateTo('/screenshots')" class="flex flex-col items-center gap-1">
           <div class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-500">
             <History :size="24" />
           </div>

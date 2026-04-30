@@ -43,6 +43,16 @@ const router = createRouter({
       path: '/settings',
       name: 'settings',
       component: () => import('../views/Settings.vue')
+    },
+    {
+      path: '/alert/:id',
+      name: 'alert-detail',
+      component: () => import('../views/AlertDetail.vue')
+    },
+    {
+      path: '/screenshots',
+      name: 'screenshots',
+      component: () => import('../views/Screenshots.vue')
     }
   ]
 });

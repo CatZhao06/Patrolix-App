@@ -17,7 +17,12 @@ import {
   Tag,
   Tabs,
   Tab,
-  FloatingPanel
+  FloatingPanel,
+  SwipeCell,
+  Badge,
+  Dialog,
+  Popup,
+  Picker
 } from 'vant';
 
 const app = createApp(App);
@@ -40,5 +45,10 @@ app.use(Tag);
 app.use(Tabs);
 app.use(Tab);
 app.use(FloatingPanel);
+app.use(SwipeCell);
+app.use(Badge);
+app.use(Dialog);
+app.use(Popup);
+app.use(Picker);
 
 app.mount('#root');
