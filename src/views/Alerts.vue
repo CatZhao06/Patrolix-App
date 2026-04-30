@@ -130,7 +130,7 @@ const beforeClose = (alert: Alert) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-gray-50">
+  <div class="h-full overflow-y-auto bg-gray-50 flex flex-col">
     <!-- 顶部导航栏 -->
     <van-nav-bar 
       title="报警记录" 

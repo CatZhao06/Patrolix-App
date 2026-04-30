@@ -6,7 +6,7 @@ const router = useRouter();
 </script>
 
 <template>
-  <div class="min-h-screen bg-white">
+  <div class="h-full overflow-y-auto bg-white">
     <!-- Header -->
     <div class="relative h-64 bg-gradient-to-br from-blue-600 to-indigo-700 p-8 flex flex-col justify-end">
       <div class="flex items-center gap-4 mb-6">

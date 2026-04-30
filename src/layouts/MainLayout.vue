@@ -19,8 +19,14 @@ const handleTabChange = (name: string) => {
 </script>
 
 <template>
-  <div class="pb-16 min-h-screen">
-    <RouterView />
+  <div class="fixed inset-0 bg-gray-50 flex flex-col">
+    <div class="flex-1 overflow-hidden">
+      <RouterView v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component" :key="route.fullPath" />
+        </transition>
+      </RouterView>
+    </div>
     
     <van-tabbar v-model="activeTab" @change="handleTabChange" fixed placeholder border>
       <van-tabbar-item name="dashboard" icon="home-o">首页</van-tabbar-item>
@@ -29,3 +35,15 @@ const handleTabChange = (name: string) => {
     </van-tabbar>
   </div>
 </template>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
